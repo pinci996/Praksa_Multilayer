@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "dgSpecHash": "bhpCQAewMl5fVNjf5yrHTj7GaozvcuCq7dnvGRN7Az0BIH/eeG10HISx+HICMCf/6+86MdwAunCc2G3gMCHd9w==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\DOMINIK\\Desktop\\Praksa_Multilayer\\Dan 4\\Test\\Project.Model\\Project.Model.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\DOMINIK\\.nuget\\packages\\microsoft.netcore.platforms\\1.1.0\\microsoft.netcore.platforms.1.1.0.nupkg.sha512",
+    "C:\\Users\\DOMINIK\\.nuget\\packages\\netstandard.library\\2.0.3\\netstandard.library.2.0.3.nupkg.sha512"
+  ],
+  "logs": []
+}
