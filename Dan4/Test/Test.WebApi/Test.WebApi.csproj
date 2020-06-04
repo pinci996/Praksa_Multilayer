@@ -93,8 +93,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\Adresa.cs" />
+    <Compile Include="Models\Osoba.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Zaposlenik.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -107,7 +108,16 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Models\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Test.Model.Common\Test.Model.Common.csproj">
+      <Project>{aff74f5a-b26b-4d6c-b243-8bc4ec6211dd}</Project>
+      <Name>Test.Model.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Test.Service.Common\Test.Service.Common.csproj">
+      <Project>{692c6283-e064-4122-aebd-b861ef76ef93}</Project>
+      <Name>Test.Service.Common</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
