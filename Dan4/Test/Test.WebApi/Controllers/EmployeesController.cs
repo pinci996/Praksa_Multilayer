@@ -14,6 +14,8 @@ using Test.Model;
 using Test.Model.Common;
 using Test.Service;
 using Test.Service.Common;
+using Test.WebApi.Models;
+using AutoMapper;
 
 namespace Test.WebApi.Controllers
 {
@@ -21,6 +23,8 @@ namespace Test.WebApi.Controllers
     {
         public List<Users> osobe = new List<Users>();
         public List<Adresses> adrese = new List<Adresses>();
+        public List<Osoba> osobaREST = new List<Osoba>();
+        public List<Adresa> adresaREST = new List<Adresa>();
         TestService service = new TestService();
 
 
@@ -29,7 +33,21 @@ namespace Test.WebApi.Controllers
         public HttpResponseMessage ReadFromUsers()
         {
             osobe = service.ReadUsers();
-            return Request.CreateResponse(HttpStatusCode.OK);
+            
+
+            var config = new MapperConfiguration(cfg => {
+                cfg.CreateMap<Users, Osoba>();
+            });
+            IMapper iMapper = config.CreateMapper();
+
+            foreach (Users users in osobe)
+            {
+                Osoba osoba = iMapper.Map<Users, Osoba>(users);
+                osobaREST.Add(osoba);
+            }
+
+            return Request.CreateResponse(HttpStatusCode.OK, osobaREST);
+
         }
 
 
@@ -38,7 +56,20 @@ namespace Test.WebApi.Controllers
         public HttpResponseMessage ReadFromAdresses()
         {
             adrese = service.ReadAdresses();
-            return Request.CreateResponse(HttpStatusCode.OK);
+            
+
+            var config = new MapperConfiguration(cfg => {
+                cfg.CreateMap<Adresses, Adresa>();
+            });
+            IMapper iMapper = config.CreateMapper();
+
+            foreach (Adresses adress in adrese)
+            {
+                Adresa adresa = iMapper.Map<Adresses, Adresa>(adress);
+                adresaREST.Add(adresa);
+            }
+
+            return Request.CreateResponse(HttpStatusCode.OK, adresaREST);
         }
 
 
