@@ -57,10 +57,6 @@
       <Project>{cb1f04a2-9ba7-476d-8d26-6b49ba9d310d}</Project>
       <Name>Test.Repository.Common</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Test.WebApi\Test.WebApi.csproj">
-      <Project>{3499a770-6ec0-4de3-98b4-427d2c51a7ee}</Project>
-      <Name>Test.WebApi</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

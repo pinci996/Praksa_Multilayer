@@ -5,7 +5,7 @@ using Test.Model.Common;
 
 namespace Test.Model
 {
-    class Adresses : IAdresses
+    public class Adresses : IAdresses
     {
         public int Id { get; set; }
         public string Street { get; set; }

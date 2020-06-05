@@ -84,12 +84,8 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AddData.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\EmployeesController.cs" />
-    <Compile Include="DataReader.cs" />
-    <Compile Include="DataUpdate.cs" />
-    <Compile Include="DeleteData.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -114,9 +110,17 @@
       <Project>{aff74f5a-b26b-4d6c-b243-8bc4ec6211dd}</Project>
       <Name>Test.Model.Common</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Test.Model\Test.Model.csproj">
+      <Project>{de95f705-7e1b-4614-9c46-056a709ba21f}</Project>
+      <Name>Test.Model</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Test.Service.Common\Test.Service.Common.csproj">
       <Project>{692c6283-e064-4122-aebd-b861ef76ef93}</Project>
       <Name>Test.Service.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Test.Service\Test.Service.csproj">
+      <Project>{958852b6-384c-4600-a78c-2326b5c4c086}</Project>
+      <Name>Test.Service</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>

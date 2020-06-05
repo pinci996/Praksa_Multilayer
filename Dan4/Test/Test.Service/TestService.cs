@@ -8,24 +8,49 @@ using Test.Repository.Common;
 using Test.Service.Common;
 using Test.Repository;
 using Test.Model;
-using Test.Service;
-using Test.WebApi.Controllers;
-using Test.WebApi.Models;
+
+
 
 namespace Test.Service
 {
     public class TestService : ITestService
     {
-        public List<Osoba> osobe = new List<Osoba>();
-        public List<Osoba> GetAllOsobe()
+        public List<Users> osobe = new List<Users>();
+
+        public List<Adresses> adrese = new List<Adresses>();
+
+        TestRepository repository = new TestRepository();
+
+        public TestService() { }
+
+        public List<Users> ReadUsers()
         {
-            return null;
+            osobe = repository.GetAllOsobe();
+            return osobe;
         }
 
-        public List<Adresa> adrese = new List<Adresa>();
-        public List<Adresa> GetAllAdrese()
+
+        public List<Adresses> ReadAdresses()
         {
-            return null;
+            adrese = repository.GetAllAdrese();
+            return adrese;
+        }
+
+        public void UpdateData(Users user)
+        {
+            repository.UpdateUser(user);
+        }
+
+
+        public void AddData (Users user)
+        {
+            repository.AddNewUser(user);
+        }
+
+
+        public void RemoveData(int Id)
+        {
+            repository.DeleteUser(Id);
         }
     }
 }

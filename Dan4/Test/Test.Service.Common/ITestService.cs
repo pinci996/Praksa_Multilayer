@@ -11,6 +11,10 @@ namespace Test.Service.Common
 {
     public interface ITestService
     {
-       
+        List<Users> ReadUsers();
+        List<Adresses> ReadAdresses();
+        void UpdateData(Users user);
+        void AddData(Users user);
+        void RemoveData(int Id);
     }
 }
