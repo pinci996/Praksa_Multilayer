@@ -23,34 +23,32 @@ namespace Test.Service
 
         public TestService() { }
 
-        public List<Users> ReadUsers()
+        public async Task <List<Users>> ReadUsersAsync()
         {
-            osobe = repository.GetAllOsobe();
-            return osobe;
+           return await repository.GetAllOsobeAsync();
         }
 
 
-        public List<Adresses> ReadAdresses()
+        public async  Task<List<Adresses>> ReadAdressesAsync()
         {
-            adrese = repository.GetAllAdrese();
-            return adrese;
+            return await repository.GetAllAdreseAsync();
         }
 
-        public void UpdateData(Users user)
+       public async Task UpdateDataAsync(Users user)
         {
-            repository.UpdateUser(user);
-        }
-
-
-        public void AddData (Users user)
-        {
-            repository.AddNewUser(user);
+            await repository.UpdateUserAsync(user);
         }
 
 
-        public void RemoveData(int Id)
+        public async Task AddDataAsync(Users user)
         {
-            repository.DeleteUser(Id);
+            await repository.AddNewUserAsync(user);
+        }
+
+
+        public async Task RemoveDataAsync(int Id)
+        {
+            await repository.DeleteUserAsync(Id);
         }
     }
 }

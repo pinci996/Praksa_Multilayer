@@ -20,12 +20,12 @@ namespace Test.Repository
         string ConnectionStr = @"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=Praksa;Integrated Security=True";
         
 
-        public List<Users> GetAllOsobe()
+        public async Task<List<Users>> GetAllOsobeAsync()
         {
             using (SqlConnection connection = new SqlConnection(ConnectionStr))
             {
 
-                string queryString = "SELECT * FROM osobe;";
+                string queryString = "SELECT * FROM users;";
 
                 SqlCommand command = new SqlCommand(queryString, connection);
                 connection.Open();
@@ -36,11 +36,11 @@ namespace Test.Repository
                 }
                 reader.Close();
             }
-            return osobe;
+            return await Task.FromResult(osobe);
         }
 
 
-        public List<Adresses> GetAllAdrese()
+        public async  Task<List<Adresses>> GetAllAdreseAsync()
         {
             using (SqlConnection connection = new SqlConnection(ConnectionStr))
             {
@@ -55,13 +55,12 @@ namespace Test.Repository
                     adrese.Add(new Adresses { Id = reader.GetInt32(0), Street = reader.GetString(1), City = reader.GetString(2) });
                 }
                 reader.Close();
-                connection.Close();
-            }
-            return adrese;
+                }
+                 return await Task.FromResult(adrese);
         }
 
 
-        public void AddNewUser(Users user)
+        public async Task AddNewUserAsync(Users user)
         {
             using (SqlConnection connection = new SqlConnection(ConnectionStr))
             {
@@ -70,11 +69,14 @@ namespace Test.Repository
                 SqlCommand command = new SqlCommand(queryString, connection);
                 connection.Open();
                 SqlDataReader reader = command.ExecuteReader();
+                reader.Close();
+                connection.Close();
             }
+            await Task.Delay(1000);
         }
 
 
-        public void UpdateUser(Users user)
+        public async Task UpdateUserAsync(Users user)
         {
             using (SqlConnection connection = new SqlConnection(ConnectionStr))
             {
@@ -83,11 +85,14 @@ namespace Test.Repository
                 SqlCommand command = new SqlCommand(queryString, connection);
                 connection.Open();
                 SqlDataReader reader = command.ExecuteReader();
+                reader.Close();
+                connection.Close();
             }
+            await Task.Delay(2000);
         }
 
 
-        public void DeleteUser(int Id)
+        public async Task DeleteUserAsync(int Id)
         {
             using (SqlConnection connection = new SqlConnection(ConnectionStr))
             {
@@ -97,7 +102,10 @@ namespace Test.Repository
                 SqlCommand command = new SqlCommand(queryString, connection);
                 connection.Open();
                 SqlDataReader reader = command.ExecuteReader();
+                reader.Close();
+                connection.Close();
             }
+            await Task.Delay(1000);
         }
     }
         

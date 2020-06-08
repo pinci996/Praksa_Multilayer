@@ -12,8 +12,14 @@ namespace Test.Repository.Common
 {
     public interface ITestRepository
     {
-        List<Users> GetAllOsobe();
+        Task<List<Users>> GetAllOsobeAsync();
 
-        List<Adresses> GetAllAdrese();
+        Task<List<Adresses>> GetAllAdreseAsync();
+
+        Task AddNewUserAsync(Users user);
+
+        Task UpdateUserAsync(Users user);
+
+        Task DeleteUserAsync(int Id);
     }
 }

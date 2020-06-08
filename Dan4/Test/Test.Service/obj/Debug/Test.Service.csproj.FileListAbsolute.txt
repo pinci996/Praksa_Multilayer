@@ -1,0 +1,17 @@
+C:\Users\pinci\Desktop\PRAKSA\Praksa_Multilayer\Dan4\Test\Test.Service\obj\Debug\Test.Service.csprojAssemblyReference.cache
+C:\Users\pinci\Desktop\PRAKSA\Praksa_Multilayer\Dan4\Test\Test.Service\obj\Debug\Test.Service.csproj.CoreCompileInputs.cache
+C:\Users\pinci\Desktop\PRAKSA\Praksa_Multilayer\Dan4\Test\Test.Service\bin\Debug\Test.Service.dll
+C:\Users\pinci\Desktop\PRAKSA\Praksa_Multilayer\Dan4\Test\Test.Service\bin\Debug\Test.Service.pdb
+C:\Users\pinci\Desktop\PRAKSA\Praksa_Multilayer\Dan4\Test\Test.Service\bin\Debug\Test.Model.Common.dll
+C:\Users\pinci\Desktop\PRAKSA\Praksa_Multilayer\Dan4\Test\Test.Service\bin\Debug\Test.Model.dll
+C:\Users\pinci\Desktop\PRAKSA\Praksa_Multilayer\Dan4\Test\Test.Service\bin\Debug\Test.Repository.Common.dll
+C:\Users\pinci\Desktop\PRAKSA\Praksa_Multilayer\Dan4\Test\Test.Service\bin\Debug\Test.Repository.dll
+C:\Users\pinci\Desktop\PRAKSA\Praksa_Multilayer\Dan4\Test\Test.Service\bin\Debug\Test.Service.Common.dll
+C:\Users\pinci\Desktop\PRAKSA\Praksa_Multilayer\Dan4\Test\Test.Service\bin\Debug\Test.Model.Common.pdb
+C:\Users\pinci\Desktop\PRAKSA\Praksa_Multilayer\Dan4\Test\Test.Service\bin\Debug\Test.Model.pdb
+C:\Users\pinci\Desktop\PRAKSA\Praksa_Multilayer\Dan4\Test\Test.Service\bin\Debug\Test.Repository.Common.pdb
+C:\Users\pinci\Desktop\PRAKSA\Praksa_Multilayer\Dan4\Test\Test.Service\bin\Debug\Test.Repository.pdb
+C:\Users\pinci\Desktop\PRAKSA\Praksa_Multilayer\Dan4\Test\Test.Service\bin\Debug\Test.Service.Common.pdb
+C:\Users\pinci\Desktop\PRAKSA\Praksa_Multilayer\Dan4\Test\Test.Service\obj\Debug\Test.Service.csproj.CopyComplete
+C:\Users\pinci\Desktop\PRAKSA\Praksa_Multilayer\Dan4\Test\Test.Service\obj\Debug\Test.Service.dll
+C:\Users\pinci\Desktop\PRAKSA\Praksa_Multilayer\Dan4\Test\Test.Service\obj\Debug\Test.Service.pdb

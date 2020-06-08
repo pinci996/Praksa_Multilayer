@@ -1,0 +1,6 @@
+C:\Users\pinci\Desktop\PRAKSA\Praksa_Multilayer\Dan4\Test\Test.Model.Common\bin\Debug\Test.Model.Common.dll
+C:\Users\pinci\Desktop\PRAKSA\Praksa_Multilayer\Dan4\Test\Test.Model.Common\bin\Debug\Test.Model.Common.pdb
+C:\Users\pinci\Desktop\PRAKSA\Praksa_Multilayer\Dan4\Test\Test.Model.Common\obj\Debug\Test.Model.Common.csprojAssemblyReference.cache
+C:\Users\pinci\Desktop\PRAKSA\Praksa_Multilayer\Dan4\Test\Test.Model.Common\obj\Debug\Test.Model.Common.csproj.CoreCompileInputs.cache
+C:\Users\pinci\Desktop\PRAKSA\Praksa_Multilayer\Dan4\Test\Test.Model.Common\obj\Debug\Test.Model.Common.dll
+C:\Users\pinci\Desktop\PRAKSA\Praksa_Multilayer\Dan4\Test\Test.Model.Common\obj\Debug\Test.Model.Common.pdb

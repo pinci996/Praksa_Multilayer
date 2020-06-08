@@ -16,6 +16,7 @@ using Test.Service;
 using Test.Service.Common;
 using Test.WebApi.Models;
 using AutoMapper;
+using System.Threading.Tasks;
 
 namespace Test.WebApi.Controllers
 {
@@ -30,9 +31,9 @@ namespace Test.WebApi.Controllers
 
         [HttpGet]
         [Route("api/users")]
-        public HttpResponseMessage ReadFromUsers()
+        public async Task<HttpResponseMessage> ReadFromUsers()
         {
-            osobe = service.ReadUsers();
+            osobe = await service.ReadUsersAsync();
             
 
             var config = new MapperConfiguration(cfg => {
@@ -53,9 +54,9 @@ namespace Test.WebApi.Controllers
 
         [HttpGet]
         [Route("api/adresses")]
-        public HttpResponseMessage ReadFromAdresses()
+        public async Task<HttpResponseMessage> ReadFromAdresses()
         {
-            adrese = service.ReadAdresses();
+            adrese = await service.ReadAdressesAsync();
             
 
             var config = new MapperConfiguration(cfg => {
@@ -75,27 +76,27 @@ namespace Test.WebApi.Controllers
 
         [HttpPost]
         [Route("api/adduser")]
-        public HttpResponseMessage CreateNewUser ([FromBody] Users user)
+        public async Task <HttpResponseMessage> AddNewUser ([FromBody] Users user)
         {
-            service.AddData(user);
+            await service.AddDataAsync(user);
             return Request.CreateResponse(HttpStatusCode.OK);
         }
 
 
         [HttpPut]
         [Route("api/updateuser")]
-        public HttpResponseMessage UserUpdate([FromBody] Users user)
+        public async Task<HttpResponseMessage> UserUpdate([FromBody] Users user)
         {
-            service.UpdateData(user);
+            await service.UpdateDataAsync(user);
             return Request.CreateResponse(HttpStatusCode.OK);
         }
 
 
         [HttpDelete]
         [Route("api/deleteuser/{Id}")]
-        public HttpResponseMessage UserDelete (int Id)
+        public async Task <HttpResponseMessage> UserDelete (int Id)
         {
-            service.RemoveData(Id);
+            await service.RemoveDataAsync(Id);
             return Request.CreateResponse(HttpStatusCode.OK);
         }
     } 
