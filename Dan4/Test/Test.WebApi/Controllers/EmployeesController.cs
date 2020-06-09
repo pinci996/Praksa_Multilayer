@@ -26,24 +26,27 @@ namespace Test.WebApi.Controllers
         public List<Adresses> adrese = new List<Adresses>();
         public List<Osoba> osobaREST = new List<Osoba>();
         public List<Adresa> adresaREST = new List<Adresa>();
-        TestService service = new TestService();
+        //TestService service = new TestService();
+
+        protected ITestService Service { get; private set; }
+        protected IMapper Mapper { get; private set; }
 
 
         [HttpGet]
         [Route("api/users")]
         public async Task<HttpResponseMessage> ReadFromUsers()
         {
-            osobe = await service.ReadUsersAsync();
+            osobe = await Service.ReadUsersAsync();
             
 
             var config = new MapperConfiguration(cfg => {
                 cfg.CreateMap<Users, Osoba>();
             });
-            IMapper iMapper = config.CreateMapper();
+            IMapper Mapper = config.CreateMapper();
 
             foreach (Users users in osobe)
             {
-                Osoba osoba = iMapper.Map<Users, Osoba>(users);
+                Osoba osoba = Mapper.Map<Users, Osoba>(users);
                 osobaREST.Add(osoba);
             }
 
@@ -56,17 +59,17 @@ namespace Test.WebApi.Controllers
         [Route("api/adresses")]
         public async Task<HttpResponseMessage> ReadFromAdresses()
         {
-            adrese = await service.ReadAdressesAsync();
+            adrese = await Service.ReadAdressesAsync();
             
 
             var config = new MapperConfiguration(cfg => {
                 cfg.CreateMap<Adresses, Adresa>();
             });
-            IMapper iMapper = config.CreateMapper();
+            IMapper Mapper = config.CreateMapper();
 
             foreach (Adresses adress in adrese)
             {
-                Adresa adresa = iMapper.Map<Adresses, Adresa>(adress);
+                Adresa adresa = Mapper.Map<Adresses, Adresa>(adress);
                 adresaREST.Add(adresa);
             }
 
@@ -78,7 +81,7 @@ namespace Test.WebApi.Controllers
         [Route("api/adduser")]
         public async Task <HttpResponseMessage> AddNewUser ([FromBody] Users user)
         {
-            await service.AddDataAsync(user);
+            await Service.AddDataAsync(user);
             return Request.CreateResponse(HttpStatusCode.OK);
         }
 
@@ -87,7 +90,7 @@ namespace Test.WebApi.Controllers
         [Route("api/updateuser")]
         public async Task<HttpResponseMessage> UserUpdate([FromBody] Users user)
         {
-            await service.UpdateDataAsync(user);
+            await Service.UpdateDataAsync(user);
             return Request.CreateResponse(HttpStatusCode.OK);
         }
 
@@ -96,7 +99,7 @@ namespace Test.WebApi.Controllers
         [Route("api/deleteuser/{Id}")]
         public async Task <HttpResponseMessage> UserDelete (int Id)
         {
-            await service.RemoveDataAsync(Id);
+            await Service.RemoveDataAsync(Id);
             return Request.CreateResponse(HttpStatusCode.OK);
         }
     } 
