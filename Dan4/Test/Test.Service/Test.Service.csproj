@@ -77,6 +77,10 @@
     <Compile Include="TestServiceModule.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Test.Common\Test.Common.csproj">
+      <Project>{5a729154-b794-43a7-b35a-f9b76f0ca03a}</Project>
+      <Name>Test.Common</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Test.Model.Common\Test.Model.Common.csproj">
       <Project>{aff74f5a-b26b-4d6c-b243-8bc4ec6211dd}</Project>
       <Name>Test.Model.Common</Name>

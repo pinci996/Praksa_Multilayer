@@ -14,9 +14,10 @@ using Test.Model;
 using Test.Model.Common;
 using Test.Service;
 using Test.Service.Common;
-using Test.WebApi.Models;
 using AutoMapper;
 using System.Threading.Tasks;
+using Test.Common;
+using Autofac;
 
 namespace Test.WebApi.Controllers
 {
@@ -24,56 +25,56 @@ namespace Test.WebApi.Controllers
     {
         public List<Users> osobe = new List<Users>();
         public List<Adresses> adrese = new List<Adresses>();
-        public List<Osoba> osobaREST = new List<Osoba>();
-        public List<Adresa> adresaREST = new List<Adresa>();
         //TestService service = new TestService();
 
         protected ITestService Service { get; private set; }
         protected IMapper Mapper { get; private set; }
 
+        public EmployeesController (ITestService Service, IMapper Mapper)
+        {
+            this.Service = Service;
+            this.Mapper = Mapper;
+        }
+
 
         [HttpGet]
         [Route("api/users")]
-        public async Task<HttpResponseMessage> ReadFromUsers()
+        public async Task<HttpResponseMessage> ReadFromUsers(int current, int records, string filterBy, string filterCondition, string sortBy, string sortProperty)
         {
-            osobe = await Service.ReadUsersAsync();
-            
+            Page page = new Page(current,records);
+            Filter filter = new Filter(filterBy,filterCondition);
+            Sort sort = new Sort(sortBy, sortProperty);
 
-            var config = new MapperConfiguration(cfg => {
-                cfg.CreateMap<Users, Osoba>();
-            });
-            IMapper Mapper = config.CreateMapper();
 
-            foreach (Users users in osobe)
+            var osobe = await Service.FilteringMethod(filter,page,sort);
+            var mapOsobe = Mapper.Map<List<Osoba>>(osobe);
+
+
+
+            if (osobe != null)
             {
-                Osoba osoba = Mapper.Map<Users, Osoba>(users);
-                osobaREST.Add(osoba);
+                return Request.CreateResponse(HttpStatusCode.OK, mapOsobe);
             }
-
-            return Request.CreateResponse(HttpStatusCode.OK, osobaREST);
-
+            return Request.CreateResponse(HttpStatusCode.NotFound, "Not Found");
         }
+
+    
 
 
         [HttpGet]
         [Route("api/adresses")]
         public async Task<HttpResponseMessage> ReadFromAdresses()
         {
-            adrese = await Service.ReadAdressesAsync();
-            
+            var adrese = await Service.ReadAdressesAsync();
+            var mapAdrese = Mapper.Map<List<Adresa>>(adrese);
 
-            var config = new MapperConfiguration(cfg => {
-                cfg.CreateMap<Adresses, Adresa>();
-            });
-            IMapper Mapper = config.CreateMapper();
 
-            foreach (Adresses adress in adrese)
+
+            if (adrese != null)
             {
-                Adresa adresa = Mapper.Map<Adresses, Adresa>(adress);
-                adresaREST.Add(adresa);
+                return Request.CreateResponse(HttpStatusCode.OK, mapAdrese);
             }
-
-            return Request.CreateResponse(HttpStatusCode.OK, adresaREST);
+            return Request.CreateResponse(HttpStatusCode.NotFound, "Not Found");
         }
 
 
@@ -102,5 +103,20 @@ namespace Test.WebApi.Controllers
             await Service.RemoveDataAsync(Id);
             return Request.CreateResponse(HttpStatusCode.OK);
         }
-    } 
-}
+
+        public class Adresa
+        {
+
+            public string Street { get; set; }
+            public string City { get; set; }
+        }
+
+        public class Osoba
+        {
+
+            public string Name { get; set; }
+            public int Age { get; set; }
+        }
+    }
+} 
+

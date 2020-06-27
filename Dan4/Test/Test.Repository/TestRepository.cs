@@ -8,6 +8,7 @@ using Test.Repository.Common;
 using Test.Model;
 using System.Data.SqlClient;
 using System.Runtime.Remoting.Messaging;
+using Test.Common;
 
 namespace Test.Repository
 {
@@ -59,6 +60,26 @@ namespace Test.Repository
                  return await Task.FromResult(adrese);
         }
 
+        public async Task<List<Users>> FilteringMethod (Filter filter, Page page, Sort sort)
+        {
+
+            using (SqlConnection connection = new SqlConnection(ConnectionStr))
+            {
+                SqlCommand command = new SqlCommand($"WITH Ordered AS(SELECT *, ROW_NUMBER() OVER(ORDER BY {sort.sortProperty} {sort.sortBy}) AS 'RowNumber'FROM users where {filter.filterBy} like '%{filter.filterCondition}%') SELECT id,username,age FROM Ordered WHERE RowNumber BETWEEN {page.Current }*{page.Records} AND {page.Current}*{page.Records}+{page.Records};",
+                connection);
+                connection.Open();
+
+                SqlDataReader reader = command.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    osobe.Add(new Users { Id = reader.GetInt32(0), Name = reader.GetString(1), Age = reader.GetInt32(2) });
+                }
+                reader.Close();
+                connection.Close();
+            }
+            return await Task.FromResult(osobe);
+        }
 
         public async Task AddNewUserAsync(Users user)
         {

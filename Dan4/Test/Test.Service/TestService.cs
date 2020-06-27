@@ -8,6 +8,7 @@ using Test.Repository.Common;
 using Test.Service.Common;
 using Test.Repository;
 using Test.Model;
+using Test.Common;
 
 
 
@@ -42,7 +43,15 @@ namespace Test.Service
             return await Repository.GetAllAdreseAsync();
         }
 
-       public async Task UpdateDataAsync(Users user)
+
+        public async Task<List<Users>> FilteringMethod(Filter filter, Page page, Sort sort)
+        {
+            
+            return await Repository.FilteringMethod(filter, page, sort);
+            
+        }
+
+        public async Task UpdateDataAsync(Users user)
         {
             await Repository.UpdateUserAsync(user);
         }

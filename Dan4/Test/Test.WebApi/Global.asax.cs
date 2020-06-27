@@ -13,6 +13,7 @@ using Autofac.Integration.WebApi;
 using Test.Repository;
 using Test.Repository.Common;
 
+
 namespace Test.WebApi
 {
     public class WebApiApplication : System.Web.HttpApplication
@@ -30,11 +31,20 @@ namespace Test.WebApi
             var container = builder.Build();
             GlobalConfiguration.Configuration.DependencyResolver = new AutofacWebApiDependencyResolver(container);
 
+            builder.RegisterType<Mapper>().As<IMapper>();
+            builder.Register(ctx => new MapperConfiguration(cfg =>
+            {
+                cfg.AddProfile(new MappingProfile());
+            }));
+            builder.Register(ctx => ctx.Resolve<MapperConfiguration>().CreateMapper())
+                .As<IMapper>()
+                .SingleInstance();
+
             //using (var scope = container.BeginLifetimeScope())
             //{
             //    var service = scope.Resolve<ITestService>();
             //}
-            
+
         }
     }
 }
