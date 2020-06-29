@@ -21,24 +21,24 @@ namespace Test.Repository
         string ConnectionStr = @"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=Praksa;Integrated Security=True";
         
 
-        public async Task<List<Users>> GetAllOsobeAsync()
-        {
-            using (SqlConnection connection = new SqlConnection(ConnectionStr))
-            {
+        //public async Task<List<Users>> GetAllOsobeAsync()
+        //{
+        //    using (SqlConnection connection = new SqlConnection(ConnectionStr))
+        //    {
 
-                string queryString = "SELECT * FROM users;";
+        //        string queryString = "SELECT * FROM users;";
 
-                SqlCommand command = new SqlCommand(queryString, connection);
-                connection.Open();
-                SqlDataReader reader = command.ExecuteReader();
-                while (reader.Read())
-                {
-                    osobe.Add(new Users { Id = reader.GetInt32(0), Name = reader.GetString(1), Age = reader.GetInt32(2) });
-                }
-                reader.Close();
-            }
-            return await Task.FromResult(osobe);
-        }
+        //        SqlCommand command = new SqlCommand(queryString, connection);
+        //        connection.Open();
+        //        SqlDataReader reader = command.ExecuteReader();
+        //        while (reader.Read())
+        //        {
+        //            osobe.Add(new Users { Id = reader.GetInt32(0), Name = reader.GetString(1), Age = reader.GetInt32(2) });
+        //        }
+        //        reader.Close();
+        //    }
+        //    return await Task.FromResult(osobe);
+        //}
 
 
         public async  Task<List<Adresses>> GetAllAdreseAsync()
@@ -65,8 +65,20 @@ namespace Test.Repository
 
             using (SqlConnection connection = new SqlConnection(ConnectionStr))
             {
-                SqlCommand command = new SqlCommand($"WITH Ordered AS(SELECT *, ROW_NUMBER() OVER(ORDER BY {sort.sortProperty} {sort.sortBy}) AS 'RowNumber'FROM users where {filter.filterBy} like '%{filter.filterCondition}%') SELECT id,username,age FROM Ordered WHERE RowNumber BETWEEN {page.Current }*{page.Records} AND {page.Current}*{page.Records}+{page.Records};",
-                connection);
+                string queryString = "";
+                if (filter == null || page == null)
+                {
+                    queryString = $"SELECT TOP {page.PageSize} * FROM users ";
+                }
+                else
+                {
+                    queryString = $"SELECT TOP {page.PageSize} * FROM users " +
+                                 $"WHERE username LIKE '%{filter.Name}%'" +
+                                 $" AND age LIKE '%{filter.Age}%' " +
+                                 $"ORDER BY  {sort.OrderBy} {sort.AscDesc}";
+
+                }
+                SqlCommand command = new SqlCommand(queryString, connection);
                 connection.Open();
 
                 SqlDataReader reader = command.ExecuteReader();

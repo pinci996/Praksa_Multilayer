@@ -32,10 +32,10 @@ namespace Test.Service
 
         public TestService() { }
 
-        public async Task <List<Users>> ReadUsersAsync()
-        {
-           return await Repository.GetAllOsobeAsync();
-        }
+        //public async Task <List<Users>> ReadUsersAsync()
+        //{
+        //   return await Repository.GetAllOsobeAsync();
+        //}
 
 
         public async  Task<List<Adresses>> ReadAdressesAsync()

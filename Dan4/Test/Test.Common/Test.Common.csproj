@@ -74,6 +74,9 @@
   <ItemGroup>
     <Compile Include="Class1.cs" />
     <Compile Include="Filter.cs" />
+    <Compile Include="IFilter.cs" />
+    <Compile Include="IPage.cs" />
+    <Compile Include="ISort.cs" />
     <Compile Include="Page.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Sort.cs" />

@@ -6,15 +6,19 @@ using System.Threading.Tasks;
 
 namespace Test.Common
 {
-    public class Page
+    public class Page : IPage
     {
-        public int Records { get; set; }
-        public int Current { get; set; }
-
-        public Page(int RecordsPerPage, int CurrentPage = 1)
+        public Page()
         {
-            this.Records = Records;
-            this.Current = Current;
+            this.PageSize = recordsOnPage;
+            this.PageIndex = currentPage;
         }
+        // default values 
+        public int recordsOnPage { get; set; } = 5;
+        public int currentPage { get; set; } = 1;
+
+        public int PageIndex { get; set; }
+        public int PageSize { get; set; } 
+        public int TotalPages { get; set; }
     }
 }

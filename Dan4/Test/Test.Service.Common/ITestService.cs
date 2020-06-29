@@ -12,7 +12,7 @@ namespace Test.Service.Common
 {
     public interface ITestService
     {
-        Task<List<Users>> ReadUsersAsync();
+        //Task<List<Users>> ReadUsersAsync();
 
         Task<List<Adresses>> ReadAdressesAsync();
 

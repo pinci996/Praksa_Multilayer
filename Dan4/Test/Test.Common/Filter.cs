@@ -6,16 +6,16 @@ using System.Threading.Tasks;
 
 namespace Test.Common
 {
-    public class Filter
+    public class Filter : IFilter
     {
-        public string filterBy { get; set; }
-        public string filterCondition { get; set; }
+        public string Name { get; set; } = "";
+        public int Age { get; set; } = 0;
 
-        public Filter(string filterBy, string filterCondition)
-        {
-            this.filterBy = filterBy;
-            this.filterCondition = filterCondition;
+        //public Filter(string filterBy, string filterCondition)
+        //{
+        //    this.filterBy = filterBy;
+        //    this.filterCondition = filterCondition;
            
-        }
+        //}
     }
 }

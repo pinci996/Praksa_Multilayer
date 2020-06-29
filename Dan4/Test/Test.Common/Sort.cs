@@ -6,15 +6,11 @@ using System.Threading.Tasks;
 
 namespace Test.Common
 {
-    public class Sort
-    {
-        public string sortBy { get; set; }
-        public string sortProperty { get; set; }
-
-        public Sort (string sortBy, string sortProperty)
+        public class Sort : ISort
         {
-            this.sortBy = sortBy;
-            this.sortProperty = sortProperty;
+            // default values
+            public string OrderBy { get; set; } = "Age";
+            public string AscDesc { get; set; } = "ASC";
         }
-    }
 }
+

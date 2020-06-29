@@ -13,7 +13,7 @@ namespace Test.Repository.Common
 {
     public interface ITestRepository
     {
-        Task<List<Users>> GetAllOsobeAsync();
+        //Task<List<Users>> GetAllOsobeAsync();
 
         Task<List<Adresses>> GetAllAdreseAsync();
 

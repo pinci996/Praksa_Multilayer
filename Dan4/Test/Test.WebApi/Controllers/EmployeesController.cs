@@ -39,11 +39,11 @@ namespace Test.WebApi.Controllers
 
         [HttpGet]
         [Route("api/users")]
-        public async Task<HttpResponseMessage> ReadFromUsers(int current, int records, string filterBy, string filterCondition, string sortBy, string sortProperty)
+        public async Task<HttpResponseMessage> ReadFromUsers([FromUri] Filter filter, [FromUri] Sort sort)
         {
-            Page page = new Page(current,records);
-            Filter filter = new Filter(filterBy,filterCondition);
-            Sort sort = new Sort(sortBy, sortProperty);
+            Page page = new Page();
+            //Filter filter = new Filter(); 
+            //Sort sort = new Sort(); 
 
 
             var osobe = await Service.FilteringMethod(filter,page,sort);
